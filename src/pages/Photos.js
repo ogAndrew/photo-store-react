@@ -1,9 +1,19 @@
-import React from "react"
+import React, { useContext } from "react"
+import { Context } from "../Context";
+
+import Image from "../components/Image";
+import { getClass } from "../utils";
 
 function Photos() {
+    const { allPhotos } = useContext(Context);
+    
+    const images = allPhotos.map(( image, idx ) => (
+        <Image key={image.id} img={image} className={getClass(idx)} />
+    ))
+
     return (
         <main className="photos">
-            <h1>Images go here</h1>
+            {images}
         </main>
     )
 }
