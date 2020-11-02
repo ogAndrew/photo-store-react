@@ -27,7 +27,6 @@ function Image({className, img}) {
                     ></i>
         }
     }
-    
 
     return (
         <div 

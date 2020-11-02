@@ -22,7 +22,6 @@ function ContextProvider({children}) {
     }
 
     function removeFromCart(img) {
-        console.log('here');
         setCartItems(prev => prev.filter(item => item.id !== img.id));
     }
 
