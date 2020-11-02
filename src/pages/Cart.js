@@ -4,7 +4,6 @@ import CartItem from "../components/CartItem";
 
 function Cart() {
     const [buttonText, setButtonText] = useState("Place Order");
-    const [headerText, setHeaderText] = useState("Check Out");
     const { cartItems, emptyCart } = useContext(Context);
     const cartItemElements = cartItems.map(item => (
         <CartItem key={item.id} item={item} />
@@ -20,22 +19,24 @@ function Cart() {
     function placeOrder() {
         setButtonText('Ordering...')
         setTimeout(() => {
-            setButtonText('')            
+            setButtonText('Order Placed')            
             emptyCart()
-            setHeaderText('Order Placed');
         },3000)
     }
 
     return (
         <main className="cart-page">
-            <h1>{headerText}</h1>
+            <h1>Checkout</h1>
             {cartItemElements}
-    <p className="total-cost">Total: {calculateTotal()}</p>
+            <p className="total-cost">Total: {calculateTotal()}</p>
+        {
+            isCart ?
             <div className="order-button">
-                {isCart &&
-                    <button onClick={placeOrder}>{buttonText}</button>                
-                }
-            </div>
+                <button onClick={placeOrder}>{buttonText}</button>                
+            </div> :
+            <p className="text-bottom">Your cart is empty.</p>
+        }
+            
         </main>
     )
 }

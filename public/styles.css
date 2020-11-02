@@ -31,6 +31,10 @@ main.cart-page {
   text-align: center;
 }
 
+.cart-page .text-bottom {
+  text-align: center;
+}
+
 .cart-page .total-cost {
   text-align: right;
   font-size: 1.3em;
