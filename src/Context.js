@@ -25,6 +25,10 @@ function ContextProvider({children}) {
         setCartItems(prev => prev.filter(item => item.id !== img.id));
     }
 
+    function emptyCart() {
+        setCartItems([]);
+    }
+
     useEffect(() => {
         fetch(url)
             .then( response => response.json())
@@ -33,7 +37,14 @@ function ContextProvider({children}) {
 
     return (
         <div>
-            <Context.Provider value={{allPhotos, cartItems, toggleFavorite, addImgToCart, removeFromCart }}>
+            <Context.Provider value={{
+                allPhotos, 
+                cartItems, 
+                toggleFavorite, 
+                addImgToCart, 
+                removeFromCart, 
+                emptyCart 
+            }}>
                 {children}
             </Context.Provider>
         </div>
